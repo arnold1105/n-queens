@@ -86,8 +86,6 @@ window.countNRooksSolutions = function(n) {
   */
   var matrixCounter = function(board) {
     var counter = 0;
-    
-    console.log(board.hasAnyRooksConflicts());
     if (board.attributes.n === 0) {
       if (!board.hasAnyRooksConflicts()) {
         return 1;
@@ -98,13 +96,15 @@ window.countNRooksSolutions = function(n) {
       var row = n - board.attributes.n;
       var oldN = board.attributes.n;
       for (var i = 0; i < n; i++) {
-        
         board.attributes.n = oldN;
         board.get(row)[i] = 1;
         board.attributes.n = oldN - 1;
-        counter += matrixCounter(board);
+        if (!board.hasAnyRooksConflicts()) {
+          counter += matrixCounter(board);
+        }
+        
         board.get(row)[i] = 0;
-      } 
+      }
       return counter;
     }
   };
