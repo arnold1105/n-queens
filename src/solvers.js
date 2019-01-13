@@ -15,6 +15,7 @@
 
 window.findNRooksSolution = function(n) {
   var solution = new Board ({n: n});
+  
   var findBoard = function(board, pieces) {
     if (pieces === 0) {
       return board;
@@ -53,7 +54,8 @@ window.countNRooksSolutions = function(n) {
         board.togglePiece(row, i);
       }
     }
-  }; 
+  };
+  
   /* var factorial = function(num) {
     if (num === 1) {
       return 1;
@@ -126,20 +128,3 @@ window.countNQueensSolutions = function(n) {
   console.log('Number of solutions for ' + n + ' queens:', solutionCount);
   return solutionCount;
 };
-
-/* var countNSolutions = function(board, pieces, type) {
-  if (pieces === 0) {
-    solutionCount++;
-  } else {
-    var row = n - pieces;
-    for (var i = 0; i < n; i++) {
-      board.togglePiece(row, i);
-      if (type === 'queen' && !board.hasAnyQueenConflictsOn(row, i)) {
-        this.countNSolutions(board, pieces - 1, type);
-      } else if (type === 'rook' && !board.hasAnyRooksConflictsOn(row, i)) {
-        matrixCounter(board, pieces - 1, type);
-      }
-      board.togglePiece(row, i);
-    }
-  }
-}; */
